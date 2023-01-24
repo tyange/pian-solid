@@ -1,9 +1,12 @@
 import type { Component } from "solid-js";
+import Layout from "./components/Layout";
 
 const App: Component = () => {
   return (
     <div>
-      <p class="text-xl">pian-solid</p>
+      <Layout>
+        <p>hi</p>
+      </Layout>
     </div>
   );
 };
