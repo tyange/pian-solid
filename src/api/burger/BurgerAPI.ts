@@ -3,9 +3,9 @@ import { Burger } from "../../types/Burger";
 import { PageData } from "../../types/PageData";
 
 const BurgerAPI = {
-  getAllBurger: async () =>
+  getAllBurger: async (pageParam: string) =>
     await AxiosInstance.get<{ Burgers: Burger[]; PageData: PageData }>(
-      "/burger"
+      `/burger?page=${pageParam ? pageParam : "0"}`
     ),
 };
 

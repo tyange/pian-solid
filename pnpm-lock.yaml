@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@solidjs/router': ^0.7.0
+  '@tabler/icons-solidjs': ^2.2.0
   autoprefixer: ^10.4.13
   axios: ^1.2.3
   postcss: ^8.4.21
@@ -14,6 +15,7 @@ specifiers:
 
 dependencies:
   '@solidjs/router': 0.7.0_solid-js@1.6.6
+  '@tabler/icons-solidjs': 2.2.0_solid-js@1.6.6
   autoprefixer: 10.4.13_postcss@8.4.21
   axios: 1.2.3
   postcss: 8.4.21
@@ -606,6 +608,19 @@ packages:
       solid-js: ^1.5.3
     dependencies:
       solid-js: 1.6.6
+    dev: false
+
+  /@tabler/icons-solidjs/2.2.0_solid-js@1.6.6:
+    resolution: {integrity: sha512-9Fo0WqGrg04M9WH9tCy4cnKoZ2Z3Hxa5IDiLGm4Q/rFUwEaB3zRsxiRn+D991gaI+xfmKN0ejFJKj223xa4vaQ==}
+    peerDependencies:
+      solid-js: ^1.4.7
+    dependencies:
+      '@tabler/icons': 2.2.0
+      solid-js: 1.6.6
+    dev: false
+
+  /@tabler/icons/2.2.0:
+    resolution: {integrity: sha512-s2mm+7JqmLObKdU89Dtiy+USmUpOlACsoXZZPykjAJZC4pK3wMYxLsclJxViWLeLTb6Bc0oga92V7R+9nrj1ZQ==}
     dev: false
 
   /acorn-node/1.8.2:

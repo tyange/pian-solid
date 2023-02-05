@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@solidjs/router": "^0.7.0",
+    "@tabler/icons-solidjs": "^2.2.0",
     "autoprefixer": "^10.4.13",
     "axios": "^1.2.3",
     "postcss": "^8.4.21",

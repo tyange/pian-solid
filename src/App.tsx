@@ -7,6 +7,7 @@ const App: Component = () => {
     <div>
       <Routes>
         <Route path="/" component={MainPage} />
+        <Route path="/:id" component={MainPage} />
       </Routes>
     </div>
   );

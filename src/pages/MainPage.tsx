@@ -1,25 +1,38 @@
-import { createResource, Show } from "solid-js";
+import { createResource, createSignal, Show } from "solid-js";
 
 import BurgerAPI from "../api/burger/BurgerAPI";
 import Layout from "../components/Layout";
 import BurgerList from "../components/BurgerList";
-import { Burger } from "../types/Burger";
-import { PageData } from "../types/PageData";
+import Paginator from "../components/Paginator";
+import { useParams } from "@solidjs/router";
 
 export default function MainPage() {
-  const [burgersData] = createResource<{
-    Burgers: Burger[];
-    PageData: PageData;
-  }>(async () => {
-    const res = await BurgerAPI.getAllBurger();
+  const params = useParams();
+  // TODO 에러 페이지 만들기
+  const [isError, setIsError] = createSignal(false);
 
-    return res.data;
-  });
+  const fetchBurgers = async (id: string) => {
+    try {
+      const res = await BurgerAPI.getAllBurger(id);
+
+      return res.data;
+    } catch (err) {
+      console.log(err);
+      setIsError(true);
+    }
+  };
+
+  const [burgersData] = createResource(() => params.id, fetchBurgers);
 
   return (
     <Layout>
       <Show when={burgersData()} keyed={true}>
-        {(burgersData) => <BurgerList burgers={burgersData.Burgers} />}
+        {(burgersData) => (
+          <>
+            <BurgerList burgers={burgersData.Burgers} />
+            <Paginator pageData={burgersData.PageData} />
+          </>
+        )}
       </Show>
     </Layout>
   );
