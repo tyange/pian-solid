@@ -1,12 +1,14 @@
 import type { Component } from "solid-js";
-import Layout from "./components/Layout";
+import { Route, Routes } from "@solidjs/router";
+import MainPage from "./pages/MainPage";
 
 const App: Component = () => {
   return (
     <div>
-      <Layout>
-        <p>hi</p>
-      </Layout>
+      <Routes>
+        <Route path="/" component={MainPage} />
+        <Route path="/:id" component={MainPage} />
+      </Routes>
     </div>
   );
 };
