@@ -22,7 +22,10 @@ export default function MainPage() {
     }
   };
 
-  const [burgersData] = createResource(() => params.id, fetchBurgers);
+  const [burgersData] = createResource(
+    () => (params.id ? params.id : "1"),
+    fetchBurgers
+  );
 
   return (
     <Layout>
