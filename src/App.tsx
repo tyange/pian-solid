@@ -5,13 +5,11 @@ import AuthPage from "./pages/AuthPage";
 
 const App: Component = () => {
   return (
-    <div>
-      <Routes>
-        <Route path="/" component={MainPage} />
-        <Route path="/:id" component={MainPage} />
-        <Route path="/auth" component={AuthPage} />
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/" component={MainPage} />
+      <Route path="/:id" component={MainPage} />
+      <Route path="/auth" component={AuthPage} />
+    </Routes>
   );
 };
 
