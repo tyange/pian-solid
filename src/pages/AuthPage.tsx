@@ -1,10 +1,4 @@
-import {
-  GoogleAuthProvider,
-  signInWithPopup,
-  setPersistence,
-  getIdToken,
-  browserSessionPersistence,
-} from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 import Layout from "../components/Layout";
 import { auth } from "../firebase-config";
