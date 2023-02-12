@@ -1,11 +1,19 @@
 import axios from "axios";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  getAuth,
+  signOut,
+} from "firebase/auth";
 import { auth } from "../firebase-config";
 
 import Layout from "../components/Layout";
+import createIsAuth from "../store/createIsAuth";
 
 export default function AuthPage() {
-  const signIn = async () => {
+  const { onSetIsAuth, onInitIsAuth } = createIsAuth;
+
+  const onClickGoogleLoginButton = async () => {
     try {
       const result = await signInWithPopup(auth, new GoogleAuthProvider());
 
@@ -15,17 +23,35 @@ export default function AuthPage() {
         CredentialString: idToken,
       });
 
+      console.log(res);
+
+      onSetIsAuth();
       localStorage.setItem("auth", "true");
     } catch (err) {
       console.log(err);
+      onInitIsAuth();
       localStorage.clear();
     }
   };
 
+  const onClickLogoutButton = async () => {
+    const currentAuth = getAuth();
+
+    try {
+      await signOut(currentAuth);
+    } catch (err) {
+      console.log(err);
+      localStorage.clear();
+    }
+
+    onInitIsAuth();
+  };
+
   return (
     <Layout>
-      <div>
-        <button onClick={signIn}>Google Login</button>
+      <div class="flex flex-col">
+        <button onClick={onClickGoogleLoginButton}>Google Login</button>
+        <button onClick={onClickLogoutButton}>Logout</button>
       </div>
     </Layout>
   );
