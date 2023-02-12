@@ -5,7 +5,8 @@ import { PageData } from "../../types/PageData";
 const BurgerAPI = {
   getAllBurger: async (pageParam: string) =>
     await AxiosInstance.get<{ Burgers: Burger[]; PageData: PageData }>(
-      `/burger?page=${pageParam ? pageParam : "0"}`
+      `/burger?page=${pageParam ? pageParam : "0"}`,
+      { withCredentials: true }
     ),
 };
 
