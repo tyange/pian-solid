@@ -1,13 +1,10 @@
 import axios from "axios";
-import createIsAuth from "../store/createIsAuth";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../firebase-config";
 
 import Layout from "../components/Layout";
 
 export default function AuthPage() {
-  const { onSetAuth, onInitAuth } = createIsAuth;
-
   const signIn = async () => {
     try {
       const result = await signInWithPopup(auth, new GoogleAuthProvider());
@@ -18,10 +15,10 @@ export default function AuthPage() {
         CredentialString: idToken,
       });
 
-      onSetAuth();
+      localStorage.setItem("auth", "true");
     } catch (err) {
       console.log(err);
-      onInitAuth();
+      localStorage.clear();
     }
   };
 

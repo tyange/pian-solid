@@ -6,17 +6,12 @@ import { createEffect } from "solid-js";
 import { onAuthStateChanged } from "firebase/auth";
 
 import { auth } from "./firebase-config";
-import createIsAuth from "./store/createIsAuth";
 
 const App: Component = () => {
-  const { isAuth, onSetAuth, onInitAuth } = createIsAuth;
-
   createEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      if (user) {
-        onSetAuth();
-      } else {
-        onInitAuth();
+      if (!user) {
+        localStorage.clear();
       }
     });
   });
