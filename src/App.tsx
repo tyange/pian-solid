@@ -2,8 +2,25 @@ import type { Component } from "solid-js";
 import { Route, Routes } from "@solidjs/router";
 import MainPage from "./pages/MainPage";
 import AuthPage from "./pages/AuthPage";
+import { createEffect } from "solid-js";
+import { onAuthStateChanged } from "firebase/auth";
+
+import { auth } from "./firebase-config";
+import createIsAuth from "./store/createIsAuth";
 
 const App: Component = () => {
+  const { isAuth, onSetAuth, onInitAuth } = createIsAuth;
+
+  createEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        onSetAuth();
+      } else {
+        onInitAuth();
+      }
+    });
+  });
+
   return (
     <Routes>
       <Route path="/" component={MainPage} />
