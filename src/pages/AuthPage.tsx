@@ -19,11 +19,9 @@ export default function AuthPage() {
 
       const idToken = await result.user.getIdToken();
 
-      const res = await axios.post(`http://127.0.0.1:8080/user/google-auth`, {
+      await axios.post(`http://127.0.0.1:8080/user/google-auth`, {
         CredentialString: idToken,
       });
-
-      console.log(res);
 
       onSetIsAuth();
       localStorage.setItem("auth", "true");
