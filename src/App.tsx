@@ -10,8 +10,6 @@ import { auth } from "./firebase-config";
 const App: Component = () => {
   createEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      console.log(user);
-
       if (!user) {
         localStorage.clear();
       }
