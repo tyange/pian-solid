@@ -3,7 +3,7 @@ import { Link } from "@solidjs/router";
 
 import { IconUser, IconLogin, IconQuestionMark } from "@tabler/icons-solidjs";
 import logoImg from "../assets/red-x-on-pickle.png";
-import createIsAuth from "../store/createIsAuth";
+import createIsAuth from "../store/createAuth";
 
 export default function Header() {
   const { isAuth } = createIsAuth;

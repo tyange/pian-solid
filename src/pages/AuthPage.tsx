@@ -8,7 +8,7 @@ import {
 import { auth } from "../firebase-config";
 
 import Layout from "../components/Layout";
-import createIsAuth from "../store/createIsAuth";
+import createIsAuth from "../store/createAuth";
 
 export default function AuthPage() {
   const { onSetIsAuth, onInitIsAuth } = createIsAuth;

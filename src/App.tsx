@@ -6,7 +6,7 @@ import { createEffect } from "solid-js";
 import { onAuthStateChanged } from "firebase/auth";
 
 import { auth } from "./firebase-config";
-import createIsAuth from "./store/createIsAuth";
+import createIsAuth from "./store/createAuth";
 
 const App: Component = () => {
   const { onSetIsAuth, onInitIsAuth } = createIsAuth;

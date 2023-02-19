@@ -1,6 +1,6 @@
 import { createRoot, createSignal } from "solid-js";
 
-const createIsAuth = () => {
+const createAuth = () => {
   const [isAuth, setIsAuth] = createSignal(false);
 
   const onSetIsAuth = () => {
@@ -18,4 +18,4 @@ const createIsAuth = () => {
   };
 };
 
-export default createRoot(createIsAuth);
+export default createRoot(createAuth);
