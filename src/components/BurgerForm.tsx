@@ -1,6 +1,14 @@
 import { createSignal, For } from "solid-js";
+import BurgerAPI from "../api/burger/BurgerAPI";
+import { getAuth, signOut } from "firebase/auth";
+import { useNavigate } from "@solidjs/router";
+import createAuth from "../store/createAuth";
 
 export default function BurgerForm() {
+  const navigate = useNavigate();
+
+  const { onInitIsAuth } = createAuth;
+
   const [burgerName, setBurgerName] = createSignal("");
   const [burgerBrand, setBurgerBrand] = createSignal("");
   const [burgerDescription, setBurgerDescription] = createSignal("");
@@ -12,16 +20,35 @@ export default function BurgerForm() {
     { label: "롯데리아", value: "lot" },
   ];
 
-  const onSubmitFormHandler = (e: Event) => {
+  const onSubmitFormHandler = async (e: Event) => {
     e.preventDefault();
 
     const newBurger = {
-      name: burgerName(),
-      brand: burgerBrand(),
-      description: burgerDescription(),
+      Name: burgerName(),
+      Brand: burgerBrand(),
+      Description: burgerDescription(),
     };
 
-    console.log(newBurger);
+    const token = sessionStorage.getItem("token");
+
+    if (!token) {
+      const currentAuth = getAuth();
+
+      await signOut(currentAuth);
+      onInitIsAuth();
+
+      navigate("/");
+
+      return;
+    }
+
+    try {
+      const res = BurgerAPI.addBurger(newBurger, token);
+
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
