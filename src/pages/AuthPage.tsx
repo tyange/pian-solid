@@ -34,6 +34,7 @@ export default function AuthPage() {
       console.log(err);
       onInitIsAuth();
       localStorage.clear();
+      sessionStorage.clear();
     }
   };
 
@@ -42,11 +43,13 @@ export default function AuthPage() {
 
     try {
       await signOut(currentAuth);
-
+      localStorage.clear();
+      sessionStorage.clear();
       navigate("/");
     } catch (err) {
       console.log(err);
       localStorage.clear();
+      sessionStorage.clear();
     }
 
     onInitIsAuth();
