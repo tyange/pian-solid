@@ -29,6 +29,7 @@ export default function AuthPage() {
 
       onSetIsAuth();
       localStorage.setItem("auth", "true");
+      sessionStorage.setItem("token", idToken);
     } catch (err) {
       console.log(err);
       onInitIsAuth();
