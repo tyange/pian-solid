@@ -23,11 +23,13 @@ export default function Header() {
         </div>
         <div>
           <ul class="flex gap-5">
-            <li>
-              <Link href="/add-burger">
-                <IconSquareRoundedPlus stroke="2" size={30} />
-              </Link>
-            </li>
+            <Show when={isAuth()} keyed={true}>
+              <li>
+                <Link href="/add-burger">
+                  <IconSquareRoundedPlus stroke="2" size={30} />
+                </Link>
+              </li>
+            </Show>
           </ul>
         </div>
         <div class="col-span-3 mr-10 justify-self-end">
