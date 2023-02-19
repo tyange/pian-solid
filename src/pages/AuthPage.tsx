@@ -1,3 +1,5 @@
+import { useNavigate } from "@solidjs/router";
+
 import axios from "axios";
 import {
   GoogleAuthProvider,
@@ -11,6 +13,8 @@ import Layout from "../components/Layout";
 import createIsAuth from "../store/createAuth";
 
 export default function AuthPage() {
+  const navigate = useNavigate();
+
   const { onSetIsAuth, onInitIsAuth } = createIsAuth;
 
   const onClickGoogleLoginButton = async () => {
@@ -37,6 +41,8 @@ export default function AuthPage() {
 
     try {
       await signOut(currentAuth);
+
+      navigate("/");
     } catch (err) {
       console.log(err);
       localStorage.clear();
