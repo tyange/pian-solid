@@ -1,24 +1,12 @@
+import { Show } from "solid-js";
 import { Link } from "@solidjs/router";
 
 import { IconUser, IconLogin, IconQuestionMark } from "@tabler/icons-solidjs";
 import logoImg from "../assets/red-x-on-pickle.png";
-import { createEffect, createSignal, Show } from "solid-js";
 import createIsAuth from "../store/createIsAuth";
 
 export default function Header() {
   const { isAuth } = createIsAuth;
-
-  const [isLoggedIn, setIsLoggedIn] = createSignal(
-    localStorage.getItem("auth") === "true"
-  );
-
-  createEffect(() => {
-    if (isAuth()) {
-      setIsLoggedIn(true);
-    } else {
-      setIsLoggedIn(false);
-    }
-  }, isAuth());
 
   return (
     <header class="flex justify-center py-10">
@@ -36,7 +24,7 @@ export default function Header() {
             <li>
               <Link href="/auth">
                 <Show
-                  when={isLoggedIn()}
+                  when={isAuth()}
                   keyed={true}
                   fallback={<IconLogin stroke="2" size={30} />}
                 >
