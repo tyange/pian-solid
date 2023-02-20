@@ -23,10 +23,17 @@ export default function BurgerForm() {
   const onSubmitFormHandler = async (e: Event) => {
     e.preventDefault();
 
+    const userId = localStorage.getItem("userId");
+
+    if (!userId) {
+      return;
+    }
+
     const newBurger = {
       Name: burgerName(),
       Brand: burgerBrand(),
       Description: burgerDescription(),
+      UserId: userId,
     };
 
     const token = sessionStorage.getItem("token");
