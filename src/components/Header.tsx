@@ -1,7 +1,12 @@
 import { Show } from "solid-js";
 import { Link } from "@solidjs/router";
 
-import { IconUser, IconLogin, IconQuestionMark } from "@tabler/icons-solidjs";
+import {
+  IconUser,
+  IconLogin,
+  IconQuestionMark,
+  IconSquareRoundedPlus,
+} from "@tabler/icons-solidjs";
 import logoImg from "../assets/red-x-on-pickle.png";
 import createIsAuth from "../store/createAuth";
 
@@ -17,7 +22,15 @@ export default function Header() {
           </Link>
         </div>
         <div>
-          <ul class="flex gap-5"></ul>
+          <ul class="flex gap-5">
+            <Show when={isAuth()} keyed={true}>
+              <li>
+                <Link href="/add-burger">
+                  <IconSquareRoundedPlus stroke="2" size={30} />
+                </Link>
+              </li>
+            </Show>
+          </ul>
         </div>
         <div class="col-span-3 mr-10 justify-self-end">
           <ul class="flex gap-4">

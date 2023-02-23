@@ -1,5 +1,5 @@
 import type { Component } from "solid-js";
-import { Route, Routes } from "@solidjs/router";
+import { Route, Routes, Navigate } from "@solidjs/router";
 import MainPage from "./pages/MainPage";
 import AuthPage from "./pages/AuthPage";
 import { createEffect } from "solid-js";
@@ -7,9 +7,10 @@ import { onAuthStateChanged } from "firebase/auth";
 
 import { auth } from "./firebase-config";
 import createIsAuth from "./store/createAuth";
+import AddBurgerPage from "./pages/AddBurgerPage";
 
 const App: Component = () => {
-  const { onSetIsAuth, onInitIsAuth } = createIsAuth;
+  const { isAuth, onSetIsAuth, onInitIsAuth } = createIsAuth;
 
   createEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -31,6 +32,10 @@ const App: Component = () => {
     <Routes>
       <Route path="/" component={MainPage} />
       <Route path="/:id" component={MainPage} />
+      <Route
+        path="/add-burger"
+        element={isAuth() ? <AddBurgerPage /> : <Navigate href="/" />}
+      />
       <Route path="/auth" component={AuthPage} />
     </Routes>
   );
