@@ -10,7 +10,7 @@ export default function BurgerForm() {
   const { onInitIsAuth } = createAuth;
 
   const [burgerName, setBurgerName] = createSignal("");
-  const [burgerBrand, setBurgerBrand] = createSignal("");
+  const [burgerBrand, setBurgerBrand] = createSignal("mc");
   const [burgerDescription, setBurgerDescription] = createSignal("");
 
   const burgerBrands = [
@@ -77,6 +77,7 @@ export default function BurgerForm() {
           <select
             class="border rounded-md"
             onSelect={(e) => setBurgerBrand(e.currentTarget.value)}
+            value={burgerBrand()}
           >
             <For each={burgerBrands}>
               {(burgerBrand) => (
