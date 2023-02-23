@@ -59,7 +59,7 @@ export default function BurgerForm() {
   };
 
   return (
-    <div class="w-1/3">
+    <div class="w-1/3 mb-20">
       <div class="mb-20">
         <h4>햄버거 추가하기</h4>
       </div>
