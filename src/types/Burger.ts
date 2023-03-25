@@ -1,6 +1,6 @@
 export type Burger = {
-  Name: string;
-  Brand: string;
-  Description: string;
-  UserId: string;
+  name: string;
+  brand: string;
+  description: string;
+  userId: string;
 };

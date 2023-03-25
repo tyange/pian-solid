@@ -1,12 +1,13 @@
 import { AxiosInstance } from "../axiosInstance";
 import { Burger } from "../../types/Burger";
-import { PageData } from "../../types/PageData";
 
 const BurgerAPI = {
   getAllBurger: async (pageParam: string) =>
-    await AxiosInstance.get<{ Burgers: Burger[]; PageData: PageData }>(
-      `/burger?page=${pageParam ? pageParam : "0"}`
+    await AxiosInstance.get<{ data: Burger[] }>(
+      `/burger?page=${pageParam ? pageParam : "1"}`
     ),
+  getBurgerCounts: async () =>
+    await AxiosInstance.get<{ data: { counts: number } }>(`/burger/counts`),
   addBurger: async (newBurger: Burger, token: string) => {
     await AxiosInstance.post("/burger", newBurger, {
       headers: {
