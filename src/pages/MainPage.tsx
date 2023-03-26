@@ -8,6 +8,7 @@ import { useParams } from "@solidjs/router";
 
 export default function MainPage() {
   const params = useParams();
+
   // TODO 에러 페이지 만들기
   const [isError, setIsError] = createSignal(false);
 
