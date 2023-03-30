@@ -17,22 +17,13 @@ export default function AuthPage() {
 
   const { onSetIsAuth, onInitIsAuth } = createIsAuth;
 
-  const onClickGoogleLoginButton = async () => {
+  const onHandleGoogleLogin = async () => {
     try {
       const result = await signInWithPopup(auth, new GoogleAuthProvider());
 
-      const idToken = await result.user.getIdToken();
-
-      const res = await axios.post(`http://127.0.0.1:8080/user/google-auth`, {
-        CredentialString: idToken,
-      });
-
-      const data = await res.data;
-
       onSetIsAuth();
-      localStorage.setItem("userId", data["user_id"]);
+      localStorage.setItem("userId", result.user.uid);
       localStorage.setItem("auth", "true");
-      sessionStorage.setItem("token", idToken);
     } catch (err) {
       console.log(err);
       onInitIsAuth();
@@ -61,7 +52,7 @@ export default function AuthPage() {
   return (
     <Layout>
       <div class="flex flex-col">
-        <button onClick={onClickGoogleLoginButton}>Google Login</button>
+        <button onClick={onHandleGoogleLogin}>Google Login</button>
         <button onClick={onClickLogoutButton}>Logout</button>
       </div>
     </Layout>

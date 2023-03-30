@@ -1,6 +1,6 @@
 import { createSignal, For } from "solid-js";
 import BurgerAPI from "../api/burger/BurgerAPI";
-import { getAuth, signOut } from "firebase/auth";
+import { getAuth, signOut, getIdToken } from "firebase/auth";
 import { useNavigate } from "@solidjs/router";
 import createAuth from "../store/createAuth";
 
@@ -30,17 +30,15 @@ export default function BurgerForm() {
     }
 
     const newBurger = {
-      Name: burgerName(),
-      Brand: burgerBrand(),
-      Description: burgerDescription(),
-      UserId: userId,
+      name: burgerName(),
+      brand: burgerBrand(),
+      description: burgerDescription(),
+      userId: userId,
     };
 
-    const token = sessionStorage.getItem("token");
+    const currentAuth = await getAuth();
 
-    if (!token) {
-      const currentAuth = getAuth();
-
+    if (!currentAuth.currentUser) {
       await signOut(currentAuth);
       onInitIsAuth();
 
@@ -49,10 +47,12 @@ export default function BurgerForm() {
       return;
     }
 
-    try {
-      const res = BurgerAPI.addBurger(newBurger, token);
+    const idToken = await getIdToken(currentAuth.currentUser);
 
-      console.log(res);
+    try {
+      await BurgerAPI.addBurger(newBurger, idToken);
+
+      navigate("/");
     } catch (err) {
       console.log(err);
     }
