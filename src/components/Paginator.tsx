@@ -1,6 +1,5 @@
-import { For } from "solid-js";
-import { Link } from "@solidjs/router";
-import { PageData } from "../types/PageData";
+import { createSignal, For, Show } from "solid-js";
+import { Link, useParams } from "@solidjs/router";
 
 import {
   IconSquareRoundedChevronLeft,
@@ -8,33 +7,37 @@ import {
 } from "@tabler/icons-solidjs";
 
 type PaginatorProps = {
-  pageData: PageData;
+  pageNums: number;
 };
 
-const Paginator = ({ pageData }: PaginatorProps) => {
+const Paginator = ({ pageNums }: PaginatorProps) => {
+  const params = useParams();
+
+  const [pageNum] = createSignal(params.id ? parseInt(params.id) : 1);
+
   return (
     <div class="flex items-center justify-center w-full gap-5 p-10">
-      <button>
-        <Link href={`/${pageData.PreviousPage}`}>
-          <IconSquareRoundedChevronLeft />
-        </Link>
-      </button>
-      <For each={Array.from(Array(pageData.TotalPages + 1).keys())}>
+      <Show when={pageNums <= pageNum()} keyed={true}>
+        <button>
+          <Link href={`/${pageNum() - 1}`}>
+            <IconSquareRoundedChevronLeft />
+          </Link>
+        </button>
+      </Show>
+      <For each={Array.from(Array(pageNums).keys(), (index) => index + 1)}>
         {(page) => (
-          <button
-            class={
-              pageData.CurrentPage === page + 1 ? "font-bold" : "text-gray-500"
-            }
-          >
-            <Link href={`/${page + 1}`}>{page + 1}</Link>
+          <button class={page === pageNum() ? "font-bold" : "text-gray-500"}>
+            <Link href={`/${page}`}>{page}</Link>
           </button>
         )}
       </For>
-      <button>
-        <Link href={`/${pageData.NextPage}`}>
-          <IconSquareRoundedChevronRight />
-        </Link>
-      </button>
+      <Show when={pageNums > pageNum()} keyed={true}>
+        <button>
+          <Link href={`/${pageNum() + 1}`}>
+            <IconSquareRoundedChevronRight />
+          </Link>
+        </button>
+      </Show>
     </div>
   );
 };
