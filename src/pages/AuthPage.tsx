@@ -1,6 +1,5 @@
 import { useNavigate } from "@solidjs/router";
 
-import axios from "axios";
 import {
   GoogleAuthProvider,
   signInWithPopup,
