@@ -8,6 +8,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase-config";
 import createIsAuth from "./store/createAuth";
 import AddBurgerPage from "./pages/AddBurgerPage";
+import MyPage from "./pages/MyPage";
 
 const App: Component = () => {
   const { isAuth, onSetIsAuth, onInitIsAuth } = createIsAuth;
@@ -36,7 +37,14 @@ const App: Component = () => {
         path="/add-burger"
         element={isAuth() ? <AddBurgerPage /> : <Navigate href="/" />}
       />
-      <Route path="/auth" component={AuthPage} />
+      <Route
+        path="/auth"
+        element={!isAuth() ? <AuthPage /> : <Navigate href="/" />}
+      />
+      <Route
+        path="/my-page"
+        element={isAuth() ? <MyPage /> : <Navigate href="/" />}
+      />
     </Routes>
   );
 };

@@ -35,7 +35,7 @@ export default function Header() {
         <div class="col-span-3 mr-10 justify-self-end">
           <ul class="flex gap-4">
             <li>
-              <Link href="/auth">
+              <Link href={isAuth() ? "/my-page" : "/auth"}>
                 <Show
                   when={isAuth()}
                   keyed={true}
