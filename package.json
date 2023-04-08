@@ -17,6 +17,7 @@
   "dependencies": {
     "@solidjs/router": "^0.7.0",
     "@tabler/icons-solidjs": "^2.2.0",
+    "@vanilla-extract/css": "^1.11.0",
     "autoprefixer": "^10.4.13",
     "axios": "^1.2.3",
     "firebase": "^9.17.1",

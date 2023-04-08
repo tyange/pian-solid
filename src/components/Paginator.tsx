@@ -16,7 +16,7 @@ const Paginator = ({ pageNums }: PaginatorProps) => {
   const [pageNum] = createSignal(params.id ? parseInt(params.id) : 1);
 
   return (
-    <div class="flex items-center justify-center w-full gap-5 p-10">
+    <div>
       <Show when={pageNums <= pageNum()} keyed={true}>
         <button>
           <Link href={`/${pageNum() - 1}`}>
@@ -26,7 +26,7 @@ const Paginator = ({ pageNums }: PaginatorProps) => {
       </Show>
       <For each={Array.from(Array(pageNums).keys(), (index) => index + 1)}>
         {(page) => (
-          <button class={page === pageNum() ? "font-bold" : "text-gray-500"}>
+          <button>
             <Link href={`/${page}`}>{page}</Link>
           </button>
         )}

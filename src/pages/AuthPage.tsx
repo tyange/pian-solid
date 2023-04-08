@@ -50,7 +50,7 @@ export default function AuthPage() {
 
   return (
     <Layout>
-      <div class="flex flex-col">
+      <div>
         <button onClick={onHandleGoogleLogin}>Google Login</button>
         <button onClick={onClickLogoutButton}>Logout</button>
       </div>

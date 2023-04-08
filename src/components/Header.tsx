@@ -14,15 +14,15 @@ export default function Header() {
   const { isAuth } = createIsAuth;
 
   return (
-    <header class="flex justify-center py-10">
-      <nav class="grid items-center w-5/12 grid-cols-5">
-        <div class="w-20">
+    <header>
+      <nav>
+        <div>
           <Link href="/">
             <img src={logoImg} alt="로고 이미지" />
           </Link>
         </div>
         <div>
-          <ul class="flex gap-5">
+          <ul>
             <Show when={isAuth()} keyed={true}>
               <li>
                 <Link href="/add-burger">
@@ -32,8 +32,8 @@ export default function Header() {
             </Show>
           </ul>
         </div>
-        <div class="col-span-3 mr-10 justify-self-end">
-          <ul class="flex gap-4">
+        <div>
+          <ul>
             <li>
               <Link href={isAuth() ? "/my-page" : "/auth"}>
                 <Show

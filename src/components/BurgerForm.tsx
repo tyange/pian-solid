@@ -59,23 +59,21 @@ export default function BurgerForm() {
   };
 
   return (
-    <div class="w-1/3 mb-20">
-      <div class="mb-20">
+    <div>
+      <div>
         <h4>햄버거 추가하기</h4>
       </div>
       <form onSubmit={onSubmitFormHandler}>
-        <div class="flex flex-col gap-2 w-1/2">
-          <label class="text-sm">버거 이름:</label>
+        <div>
+          <label>버거 이름:</label>
           <input
             onInput={(e) => setBurgerName(e.currentTarget.value)}
             type="text"
-            class="border rounded-md"
           />
         </div>
-        <div class="flex flex-col gap-2 w-1/2">
-          <label class="text-sm">브랜드:</label>
+        <div>
+          <label>브랜드:</label>
           <select
-            class="border rounded-md"
             onSelect={(e) => setBurgerBrand(e.currentTarget.value)}
             value={burgerBrand()}
           >
@@ -86,15 +84,14 @@ export default function BurgerForm() {
             </For>
           </select>
         </div>
-        <div class="flex flex-col gap-2 mt-10">
-          <label class="text-sm">이 버거를 설명해주세요:</label>
+        <div>
+          <label>이 버거를 설명해주세요:</label>
           <textarea
             onChange={(e) => setBurgerDescription(e.currentTarget.value)}
-            class="border rounded-md h-80"
           />
         </div>
         <div>
-          <button class="w-full border-2 mt-10 rounded-lg px-12">SUBMIT</button>
+          <button>SUBMIT</button>
         </div>
       </form>
     </div>

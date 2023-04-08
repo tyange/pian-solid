@@ -3,9 +3,9 @@ import Header from "./Header";
 
 export default function Layout(props: ParentProps): JSX.Element {
   return (
-    <div class="flex flex-col h-screen">
+    <div>
       <Header />
-      <main class="flex-1">{props.children}</main>
+      <main>{props.children}</main>
     </div>
   );
 }
