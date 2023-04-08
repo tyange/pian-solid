@@ -1,6 +1,6 @@
 import { For } from "solid-js";
-import BurgerItem from "./BurgerItem";
-import { Burger } from "../types/Burger";
+import BurgerItem from "./BurgerItem/BurgerItem";
+import { Burger } from "../../types/Burger";
 
 type BurgerListProps = {
   burgers: Burger[];

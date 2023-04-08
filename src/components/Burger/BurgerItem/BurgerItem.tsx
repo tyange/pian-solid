@@ -1,6 +1,6 @@
-import { Burger } from "../types/Burger";
+import { Burger } from "../../../types/Burger";
 
-import defaultBurgerImg from "../assets/burger.png";
+import defaultBurgerImg from "../../../assets/burger.png";
 
 type BurgerItemProps = {
   burger: Burger;

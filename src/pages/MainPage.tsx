@@ -2,7 +2,7 @@ import { createResource, createSignal, Show } from "solid-js";
 
 import BurgerAPI from "../api/burger/BurgerAPI";
 import Layout from "../components/Layout";
-import BurgerList from "../components/BurgerList";
+import BurgerList from "../components/Burger/BurgerList";
 import Paginator from "../components/Paginator";
 import { useParams } from "@solidjs/router";
 

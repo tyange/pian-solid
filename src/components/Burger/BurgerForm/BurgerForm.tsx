@@ -1,8 +1,12 @@
 import { createSignal, For } from "solid-js";
-import BurgerAPI from "../api/burger/BurgerAPI";
-import { getAuth, signOut, getIdToken } from "firebase/auth";
 import { useNavigate } from "@solidjs/router";
-import createAuth from "../store/createAuth";
+
+import BurgerAPI from "../../../api/burger/BurgerAPI";
+import { getAuth, signOut, getIdToken } from "firebase/auth";
+
+import createAuth from "../../../store/createAuth";
+
+import * as styles from "./BurgerForm.css";
 
 export default function BurgerForm() {
   const navigate = useNavigate();
@@ -59,7 +63,7 @@ export default function BurgerForm() {
   };
 
   return (
-    <div>
+    <div class={styles.formContainer}>
       <div>
         <h4>햄버거 추가하기</h4>
       </div>
