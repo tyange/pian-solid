@@ -6,10 +6,14 @@ import {
   getAuth,
   signOut,
 } from "firebase/auth";
-import { auth } from "../firebase-config";
+import { auth } from "../../firebase-config";
 
-import Layout from "../components/Layout";
-import createIsAuth from "../store/createAuth";
+import Layout from "../../components/Layout/Layout";
+import createIsAuth from "../../store/createAuth";
+
+import * as styles from "../../components/Layout/Layout.css";
+import * as authPageStyles from "./AuthPage.css";
+import * as atomicStyles from "../../styles/styles.css";
 
 export default function AuthPage() {
   const navigate = useNavigate();
@@ -50,9 +54,16 @@ export default function AuthPage() {
 
   return (
     <Layout>
-      <div>
-        <button onClick={onHandleGoogleLogin}>Google Login</button>
-        <button onClick={onClickLogoutButton}>Logout</button>
+      <div
+        class={`${styles.mainContainer} ${atomicStyles.directionColumnCenter} ${authPageStyles.authContainer}`}
+      >
+        <button
+          class={`outline contrast ${authPageStyles.authButton}`}
+          onClick={onHandleGoogleLogin}
+        >
+          <i class="fa-brands fa-google"></i>
+          <span>구글 로그인</span>
+        </button>
       </div>
     </Layout>
   );

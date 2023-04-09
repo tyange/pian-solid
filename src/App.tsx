@@ -1,7 +1,7 @@
 import type { Component } from "solid-js";
 import { Route, Routes, Navigate } from "@solidjs/router";
 import MainPage from "./pages/MainPage";
-import AuthPage from "./pages/AuthPage";
+import AuthPage from "./pages/AuthPage/AuthPage";
 import { createEffect } from "solid-js";
 import { onAuthStateChanged } from "firebase/auth";
 

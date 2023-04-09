@@ -1,10 +1,12 @@
 import { createResource, createSignal, Show } from "solid-js";
 
 import BurgerAPI from "../api/burger/BurgerAPI";
-import Layout from "../components/Layout";
-import BurgerList from "../components/Burger/BurgerList";
+import Layout from "../components/Layout/Layout";
+import BurgerList from "../components/Burger/BurgerList/BurgerList";
 import Paginator from "../components/Paginator";
 import { useParams } from "@solidjs/router";
+
+import * as styles from "../components/Layout/Layout.css";
 
 export default function MainPage() {
   const params = useParams();
@@ -43,18 +45,20 @@ export default function MainPage() {
 
   return (
     <Layout>
-      <Show when={burgersData()} keyed={true}>
-        {(burgersData) => (
-          <>
-            <BurgerList burgers={burgersData.data} />
-          </>
-        )}
-      </Show>
-      <Show when={pageCounts()} keyed={true}>
-        {(pageCounts) => (
-          <Paginator pageNums={Math.trunc(pageCounts.data.counts / 6 + 1)} />
-        )}
-      </Show>
+      <div class={styles.mainContainer}>
+        <Show when={burgersData()} keyed={true}>
+          {(burgersData) => (
+            <>
+              <BurgerList burgers={burgersData.data} />
+            </>
+          )}
+        </Show>
+        <Show when={pageCounts()} keyed={true}>
+          {(pageCounts) => (
+            <Paginator pageNums={Math.trunc(pageCounts.data.counts / 6 + 1)} />
+          )}
+        </Show>
+      </div>
     </Layout>
   );
 }
