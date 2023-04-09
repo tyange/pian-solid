@@ -3,7 +3,7 @@ import { createResource, createSignal, Show } from "solid-js";
 import BurgerAPI from "../api/burger/BurgerAPI";
 import Layout from "../components/Layout/Layout";
 import BurgerList from "../components/Burger/BurgerList/BurgerList";
-import Paginator from "../components/Paginator";
+import Paginator from "../components/Paginator/Paginator";
 import { useParams } from "@solidjs/router";
 
 import * as styles from "../components/Layout/Layout.css";
@@ -55,7 +55,7 @@ export default function MainPage() {
         </Show>
         <Show when={pageCounts()} keyed={true}>
           {(pageCounts) => (
-            <Paginator pageNums={Math.trunc(pageCounts.data.counts / 6 + 1)} />
+            <Paginator pageNums={Math.ceil(pageCounts.data.counts / 9)} />
           )}
         </Show>
       </div>
