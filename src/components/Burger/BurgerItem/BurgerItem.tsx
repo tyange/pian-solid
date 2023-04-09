@@ -15,12 +15,7 @@ export default function BurgerItem({ burger }: BurgerItemProps) {
     >
       <div class={styles.burgerInfo}>
         <div>
-          <div>
-            <span class={styles.burgerName}>{burger.name}</span>
-          </div>
-          <div>
-            <span class={styles.burgerBrand}>{burger.brand}</span>
-          </div>
+          <span class={styles.burgerBrand}>{burger.brand}</span>
         </div>
         <div class={styles.burgerImgContainer}>
           <img
@@ -30,8 +25,13 @@ export default function BurgerItem({ burger }: BurgerItemProps) {
           />
         </div>
       </div>
-      <div class={styles.burgerDescription}>
-        <p>{burger.description}</p>
+      <div>
+        <div>
+          <span class={styles.burgerName}>{burger.name}</span>
+        </div>
+      </div>
+      <div class={styles.burgerDescriptionWrapper}>
+        <p class={styles.burgerDescription}>{burger.description}</p>
       </div>
     </div>
   );

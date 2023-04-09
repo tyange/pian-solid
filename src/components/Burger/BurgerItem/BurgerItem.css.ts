@@ -11,15 +11,18 @@ export const burgerItemWrapper = style({
 
 export const burgerInfo = style({
   display: "flex",
+  alignItems: "center",
   width: "100%",
   justifyContent: "space-between",
 });
 
 export const burgerName = style({
-  fontSize: vars.fonts.sm,
+  fontSize: vars.fonts.md,
 });
 
 export const burgerBrand = style({
+  display: "flex",
+  justifyContent: "flex-end",
   fontSize: vars.fonts.sm,
 });
 
@@ -31,7 +34,11 @@ export const burgerImg = style({
   width: "100%",
 });
 
-export const burgerDescription = style({
+export const burgerDescriptionWrapper = style({
   flex: 1,
   overflow: "auto",
+});
+
+export const burgerDescription = style({
+  fontSize: vars.fonts.sm,
 });
