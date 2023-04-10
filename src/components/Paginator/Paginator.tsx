@@ -18,10 +18,6 @@ const Paginator = ({ pageNums }: PaginatorProps) => {
     setPageNum(currentPageNum);
   };
 
-  createEffect(() => {
-    console.log(pageNum());
-  }, [pageNum]);
-
   return (
     <div class={styles.paginatorWrapper}>
       <Show when={pageNums <= pageNum() && pageNums !== 1} keyed={true}>
